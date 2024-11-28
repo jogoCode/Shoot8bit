@@ -27,12 +27,14 @@ signal OnShooted();
 func _ready() -> void:
 	#to initialized hud
 	ammo_changed.emit();
+	if( !_weaponData):
+		printerr("No weapon data !")
 	if !_weaponVisual:
-		printerr("no weapon visual");
+		printerr("No weapon visual !");
 	if !_spawnOrigin:
-		printerr("no spawn origin");
+		printerr("No spawn origin !");
 	if !_bullet:
-		printerr("no bullet packed scene");
+		printerr("No bullet packed scene !");
 	initialize();
 	
 

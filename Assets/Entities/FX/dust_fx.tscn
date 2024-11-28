@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c7albe65iewue"]
 
 [ext_resource type="Texture2D" uid="uid://cgsjxmarf64jb" path="res://Assets/Sprites/FX/dust_fx.png" id="1_m5mb8"]
-[ext_resource type="Script" path="res://Assets/Content/FX/dust_fx.gd" id="2_rglws"]
+[ext_resource type="Script" path="res://Assets/Entities/FX/animated_sprite_fx.gd" id="2_rglws"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fg0wm"]
 atlas = ExtResource("1_m5mb8")
@@ -39,19 +39,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_fyur3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fxto3")
+"texture": SubResource("AtlasTexture_ia767")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ia767")
+"texture": SubResource("AtlasTexture_fxto3")
 }],
 "loop": false,
 "name": &"dust",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [node name="DustFx" type="AnimatedSprite2D"]
 texture_filter = 1
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_76msr")
 animation = &"dust"
 autoplay = "dust"

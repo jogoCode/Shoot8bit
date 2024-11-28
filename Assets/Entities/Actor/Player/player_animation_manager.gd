@@ -10,11 +10,15 @@ signal OnFlipH(bool);
 
 func _ready() -> void:
 	_playerMovement = _character._playerMovement;
-	_playerMovement.OnMovement.connect(move_animation);
+	_connect_signals();
+	
 	change_animation("Idle");
+	
+
+func _connect_signals():
+	_playerMovement.OnMovement.connect(move_animation);
 	OnFlipH.connect(flip_h);
-
-
+	_animatedSprite.frame_changed.connect(_on_walk);
 
 func _process(delta: float) -> void:
 	pass
@@ -34,3 +38,11 @@ func change_animation(newAnim:String):
 
 func flip_h(active:bool):
 	_animatedSprite.flip_h = active;
+
+func _on_walk():
+	if(_animatedSprite.frame == 0 and _animatedSprite.animation == "Run"):
+		var dustFxInst = load("res://Assets/Entities/FX/dust_fx.tscn").instantiate();
+		dustFxInst.global_position = _dustOrigin.global_position;
+		print(owner.name);
+		get_tree().get_current_scene().add_child(dustFxInst);
+	

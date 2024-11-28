@@ -1,15 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsxy6haadrbwd"]
 
 [ext_resource type="Texture2D" uid="uid://bpm75s2ijgikt" path="res://Assets/Sprites/Player/bullet.png" id="1_w2w6w"]
-[ext_resource type="Script" path="res://Assets/Content/Projectile/projectile.gd" id="1_ydtjb"]
+[ext_resource type="Script" path="res://Assets/Entities/Projectile/projectile.gd" id="1_ydtjb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5faly"]
 size = Vector2(2.5, 2.5)
 
 [node name="projectile" type="Area2D"]
-scale = Vector2(4, 4)
 script = ExtResource("1_ydtjb")
-_speed = 500.0
+_speed = 250.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_w2w6w")

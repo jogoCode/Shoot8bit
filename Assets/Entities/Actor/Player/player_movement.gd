@@ -5,8 +5,8 @@ class_name PlayerMovement
 @onready var _owner:CharacterBody2D = get_parent();
 var _velocity:Vector2;
 var _direction:Vector2;
-const SPEED = 300.0
-const ACCEL = 15;
+@export var SPEED = 300.0
+@export var ACCEL = 15;
 signal OnMovement(bool);
 
 func _ready() -> void:

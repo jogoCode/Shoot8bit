@@ -8,6 +8,7 @@ var _target:Node3D;
  
 func _ready() -> void:
 	super._ready();
+	
 	#global_transform.basis.z = -_dir.normalized();
 	await get_tree().create_timer(_lifeTime).timeout;
 	queue_free();

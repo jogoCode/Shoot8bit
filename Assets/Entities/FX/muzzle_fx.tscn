@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct6l7beqmfrb3"]
+
+[ext_resource type="Texture2D" uid="uid://4vptifcauet8" path="res://Assets/Sprites/FX/muzzle_fx.png" id="1_5xl7t"]
+[ext_resource type="Script" path="res://Assets/Entities/FX/animated_sprite_fx.gd" id="2_alb4b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olb25"]
+atlas = ExtResource("1_5xl7t")
+region = Rect2(0, 0, 4, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6poym"]
+atlas = ExtResource("1_5xl7t")
+region = Rect2(4, 0, 4, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vtjq"]
+atlas = ExtResource("1_5xl7t")
+region = Rect2(8, 0, 4, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8rko"]
+atlas = ExtResource("1_5xl7t")
+region = Rect2(12, 0, 4, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fke86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olb25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6poym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vtjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8rko")
+}],
+"loop": false,
+"name": &"muzzle_fx",
+"speed": 20.0
+}]
+
+[node name="muzzle_fx" type="AnimatedSprite2D"]
+z_index = 1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_fke86")
+animation = &"muzzle_fx"
+autoplay = "muzzle_fx"
+script = ExtResource("2_alb4b")
