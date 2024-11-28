@@ -3,6 +3,7 @@ class_name PlayerAnimation
 
 @export var _playerMovement:PlayerMovement;
 @export var _animatedSprite:AnimatedSprite2D;
+@export var _dustOrigin:Node2D;
 
 signal OnFlipH(bool);
 
@@ -23,6 +24,9 @@ func move_animation(isMoving:bool):
 		change_animation("Run");
 	else:
 		change_animation("Idle");
+
+func get_animation() -> String: 
+	return _animatedSprite.animation;
 
 func change_animation(newAnim:String):
 	_animatedSprite.play(newAnim);

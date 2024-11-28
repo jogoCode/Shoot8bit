@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvxiqdf7hqg4w"]
+
+[ext_resource type="PackedScene" uid="uid://cvw7nc4vagkpp" path="res://Assets/Sprites/Player/player.tscn" id="1_e0cqr"]
+[ext_resource type="PackedScene" uid="uid://c7albe65iewue" path="res://Assets/Content/FX/dust_fx.tscn" id="2_lbd5f"]
+[ext_resource type="Script" path="res://Assets/Content/Actor/Player/Camera.gd" id="3_spna7"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_e0cqr")]
+position = Vector2(722, 0)
+
+[node name="DustFx" parent="." instance=ExtResource("2_lbd5f")]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("_target")]
+position = Vector2(722, 0)
+position_smoothing_enabled = true
+script = ExtResource("3_spna7")
+_target = NodePath("../Player")
+_speed = 15.0

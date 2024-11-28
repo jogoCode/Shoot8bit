@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp6tx54jhjbfb"
-path="res://.godot/imported/Hand_Soldier.png-da859527a2e99bf8388d283fa356eccc.ctex"
+uid="uid://bpm75s2ijgikt"
+path="res://.godot/imported/bullet.png-2146d4c8fb4e0d7f407a70ee452477a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hand_Soldier.png"
-dest_files=["res://.godot/imported/Hand_Soldier.png-da859527a2e99bf8388d283fa356eccc.ctex"]
+source_file="res://Assets/Sprites/Player/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-2146d4c8fb4e0d7f407a70ee452477a6.ctex"]
 
 [params]
 
