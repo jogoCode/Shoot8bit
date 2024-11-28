@@ -24,5 +24,5 @@ func _process(delta: float) -> void:
 
 
 func _on_shoot():
-	_oscillator._add_velocity(20);
+	_oscillator._add_velocity(40);
 	
