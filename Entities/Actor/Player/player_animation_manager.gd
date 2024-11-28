@@ -41,8 +41,7 @@ func flip_h(active:bool):
 
 func _on_walk():
 	if(_animatedSprite.frame == 0 and _animatedSprite.animation == "Run"):
-		var dustFxInst = load("res://Assets/Entities/FX/dust_fx.tscn").instantiate();
+		var dustFxInst = load("res://Entities/FX/dust_fx.tscn").instantiate();
 		dustFxInst.global_position = _dustOrigin.global_position;
-		print(owner.name);
 		get_tree().get_current_scene().add_child(dustFxInst);
-	
+		SoundFxManager.play("footstep_carpet");

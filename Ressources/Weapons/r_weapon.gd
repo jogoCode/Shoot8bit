@@ -8,3 +8,6 @@ class_name RWeapon
 @export var _maxAmmo:int;
 @export var _sprite:Texture;
 @export var _projectile:PackedScene;
+@export var _shootSound:String;
+@export var _reloadSound:String;
+@export var _muzzleOffset:Vector2;

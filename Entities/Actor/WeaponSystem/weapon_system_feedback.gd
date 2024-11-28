@@ -1,7 +1,7 @@
 extends Node
 
 @onready var _weaponSystem:WeaponSystem = get_parent();
-var _muzzleFx = load("res://Assets/Entities/FX/muzzle_fx.tscn");
+var _muzzleFx = load("res://Entities/FX/muzzle_fx.tscn");
 
 func _ready() -> void:
 	_connect_signals();
@@ -12,5 +12,5 @@ func _connect_signals():
 
 func _on_shoot():
 	var muzzleFx = _muzzleFx.instantiate();
-	muzzleFx
+	SoundFxManager.play(_weaponSystem._weaponData._shootSound);
 	_weaponSystem._spawnOrigin.add_child(muzzleFx);

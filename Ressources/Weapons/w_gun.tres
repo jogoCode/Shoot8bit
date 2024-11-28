@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RWeapon" load_steps=4 format=3 uid="uid://cqinmishtua2r"]
+
+[ext_resource type="PackedScene" uid="uid://bsxy6haadrbwd" path="res://Entities/Projectile/projectile.tscn" id="1_r0fjk"]
+[ext_resource type="Texture2D" uid="uid://cfk5p1c4jfk34" path="res://Assets/Sprites/Weapon/weapon_sprite.png" id="2_hxgtu"]
+[ext_resource type="Script" path="res://Ressources/Weapons/r_weapon.gd" id="3_a2plr"]
+
+[resource]
+script = ExtResource("3_a2plr")
+_name = "gun"
+_cadence = 1.0
+_reloadTime = 0.96
+_camShakeAmount = 0.0
+_maxAmmo = 15
+_sprite = ExtResource("2_hxgtu")
+_projectile = ExtResource("1_r0fjk")
+_shootSound = "gun"
+_reloadSound = "gun_reload"
+_muzzleOffset = Vector2(10.5, -2.75)

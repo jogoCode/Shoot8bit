@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ct6l7beqmfrb3"]
 
 [ext_resource type="Texture2D" uid="uid://4vptifcauet8" path="res://Assets/Sprites/FX/muzzle_fx.png" id="1_5xl7t"]
-[ext_resource type="Script" path="res://Assets/Entities/FX/animated_sprite_fx.gd" id="2_alb4b"]
+[ext_resource type="Script" path="res://Entities/FX/animated_sprite_fx.gd" id="2_alb4b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olb25"]
 atlas = ExtResource("1_5xl7t")

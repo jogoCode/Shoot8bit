@@ -9,7 +9,7 @@ extends Node2D
 var _bulletOriginStartPos:Vector2;
 
 func _ready() -> void:
-	_bulletOriginStartPos = _bulletOrigin.position;
+	_bulletOriginStartPos = _weaponSystem._weaponData._muzzleOffset;
 	if(!_playerAnimation):
 		printerr("Player animation value is null !");
 	if(!_weaponSystem):

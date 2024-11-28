@@ -74,6 +74,7 @@ func set_weapon_stats():
 			return
 		node.queue_free();
 	_weaponVisual.texture = _weaponData._sprite;
+	_spawnOrigin.position = _weaponData._muzzleOffset;
 
 
 func _process(delta: float) -> void:
@@ -86,7 +87,7 @@ func shoot(bulletDir:Vector2):
 	if _ammo <=0 and _reloadTimer.time_left == 0:
 		reload_start_timer();
 		print("RELOAD");
-	if !_canShoot or _ammo <=0:
+	if !_canShoot or _ammo <=0 or !_reloadTimer.is_stopped():
 		return;
 	var bulletInst = _bullet.instantiate();
 	var cadence = _bulletCadence + Time.get_ticks_msec();
@@ -106,7 +107,9 @@ func shoot(bulletDir:Vector2):
 					bulletInst._target = _owner._target;
 
 func reload_start_timer():
-	_reloadTimer.start();
+	if(_ammo != _maxAmmo and _reloadTimer.is_stopped()):
+		SoundFxManager.play(_weaponData._reloadSound);
+		_reloadTimer.start();
 	#_reloadBar.show();
 
 func reload():
