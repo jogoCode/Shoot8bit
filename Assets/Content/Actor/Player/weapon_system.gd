@@ -70,7 +70,7 @@ func set_weapon_stats():
 		if node == null:
 			return
 		node.queue_free();
-	_weaponVisual.add_child(_weaponData._model.instantiate());
+	_weaponVisual.texture = _weaponData._sprite;
 
 
 func _process(delta: float) -> void:
