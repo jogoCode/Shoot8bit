@@ -1,18 +1,27 @@
-extends Node2D
+extends Hitbox
+class_name ProjectileArea
 
-@export var _area2D:Area2D;
-@export var _destroyAtCollision = true;
-
-# Called when the node enters the scene tree for the first time.
+var _dir:Vector2 =Vector2.RIGHT;
+@export var _lifeTime:float = 2;
+@export var _speed:float = 5;
+var _target:Node3D;
+ 
 func _ready() -> void:
-	_area2D.area_entered.connect(destroy_at_collision);
+	super._ready();
+	#global_transform.basis.z = -_dir.normalized();
+	await get_tree().create_timer(_lifeTime).timeout;
+	queue_free();
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	look_at(position+_dir.normalized());
+	position += Vector2(_dir.x,_dir.y)*_speed*delta;
 
 
-func destroy_at_collision(area:Area2D)->void:
-	if _destroyAtCollision:
+func _area_entered(area):
+	super._area_entered(area);
+	if !(area is ProjectileArea ):
+		hide();
+		get_child(0).shape = null;
+		await get_tree().create_timer(0.5).timeout;
 		queue_free();

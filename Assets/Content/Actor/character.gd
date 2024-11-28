@@ -1,13 +1,13 @@
 extends CharacterBody2D
 class_name Character2D
 
-@export var _speed:float = 5.0;
-@export var _sprintSpeed:float = 5.0;
-@export var _jumpVel:float= 4.5;
-@export var _weaponSystem:WeaponSystem;
+#@export var _speed:float = 5.0;
+#@export var _sprintSpeed:float = 5.0;
+#@export var _jumpVel:float= 4.5;
+
 @onready var _healthSystem:HealthSystem = get_node("HealthSystem");
-@onready var _model:Node3D = $Visual;
 @export var _target:Character2D;
+
 var _impulseVelocity:Vector2;
 var _impulseFriction:float;
 var _lastVel:Vector2;
@@ -41,11 +41,10 @@ func impulse(delta):
 func _physics_process(delta: float) -> void:
 	if _healthSystem._healthState == HealthSystem.HealthStates.DEAD:
 		velocity = Vector2.ZERO;
-		_speed = 0;
-		_sprintSpeed = 0;
-		print("DEAD");
 		return;
 	impulse(delta);
+	
+	move_and_slide();
 
 func applyImpulse(force: Vector2,impulseFriction):
 	_impulseVelocity= Vector2.ZERO;

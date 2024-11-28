@@ -1,14 +1,15 @@
 extends Node
 class_name PlayerAnimation
 
-@export var _playerMovement:PlayerMovement;
+@onready var _character:Character2D = get_parent();
+var _playerMovement:PlayerMovement;
 @export var _animatedSprite:AnimatedSprite2D;
 @export var _dustOrigin:Node2D;
 
 signal OnFlipH(bool);
 
 func _ready() -> void:
-	_playerMovement = get_parent();
+	_playerMovement = _character._playerMovement;
 	_playerMovement.OnMovement.connect(move_animation);
 	change_animation("Idle");
 	OnFlipH.connect(flip_h);

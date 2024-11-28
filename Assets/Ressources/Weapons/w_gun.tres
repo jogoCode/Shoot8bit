@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RWeapon" load_steps=3 format=3 uid="uid://cguq7xd8s4urj"]
+
+[ext_resource type="Script" path="res://Assets/Ressources/Weapons/r_weapon.gd" id="1_8vym4"]
+[ext_resource type="PackedScene" uid="uid://bsxy6haadrbwd" path="res://Assets/Content/Projectile/projectile.tscn" id="1_jgrg6"]
+
+[resource]
+script = ExtResource("1_8vym4")
+_name = "gun"
+_cadence = 1.0
+_reloadTime = 3.0
+_camShakeAmount = 0.0
+_maxAmmo = 15
+_projectile = ExtResource("1_jgrg6")

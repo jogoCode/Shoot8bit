@@ -1,11 +1,11 @@
 extends Node
 class_name WeaponSystem;
 
-#@onready var _owner:Character = get_parent();
+@onready var _owner:Character2D = get_parent();
 @export var _weaponData:RWeapon;
 @export var _bullet:PackedScene;
-@export var _weaponVisual:Node3D;
-@export var _spawnOrigin:Node3D;
+@export var _weaponVisual:Node2D;
+@export var _spawnOrigin:Node2D;
 @export var _shakeWhenShoot:bool = false;
 
 var _ammo:int;
@@ -50,7 +50,8 @@ func initialize():
 	_reloadTimer.timeout.connect(reload);
 	#_reloadBar = _reloadBarScene.instantiate();
 	#_owner.get_node("Visual").add_child(_reloadBar);
-	_reloadBar.hide();
+	if(_reloadBar != null):
+		_reloadBar.hide();
 	if _weaponData:
 		set_weapon_stats();
 	
@@ -73,15 +74,12 @@ func set_weapon_stats():
 
 
 func _process(delta: float) -> void:
-	var reloadBar:ProgressBar  = _reloadBar.get_node("SubViewport/ProgressBar");
-	reloadBar.value = _reloadTimer.time_left;
-	reloadBar.max_value = _reloadTimer.wait_time;
-	if _owner._status == Character.CharacterStatus.NOT_ACTIVE:
+	if _owner._status == Character2D.CharacterStatus.NOT_ACTIVE:
 		_ammo = 0;
 		_canShoot = false;
 
 
-func shoot(bulletDir:Vector3):
+func shoot(bulletDir:Vector2):
 	if _ammo <=0 and _reloadTimer.time_left == 0:
 		reload_start_timer();
 		print("RELOAD");
@@ -89,9 +87,9 @@ func shoot(bulletDir:Vector3):
 		return;
 	var bulletInst = _bullet.instantiate();
 	var cadence = _bulletCadence + Time.get_ticks_msec();
-	if bulletInst:
+	if bulletInst is ProjectileArea:
 		bulletInst.global_position = _spawnOrigin.global_position;
-		if bulletInst is ProjectileArea:
+		if bulletInst :
 			_ammo -=1;
 			ammo_changed.emit();
 			bulletInst._dir = bulletDir;
@@ -100,19 +98,17 @@ func shoot(bulletDir:Vector3):
 			_canShoot = false;
 			_owner.owner.add_child(bulletInst);
 			if _owner._target:
-				if _owner._target._status == Character.CharacterStatus.ACTIVE:
+				if _owner._target._status == Character2D.CharacterStatus.ACTIVE:
 					bulletInst._target = _owner._target;
-			if _shakeWhenShoot:
-				FeedBackSystem.camera_shake(_weaponData._camShakeAmount);
 
 func reload_start_timer():
 	_reloadTimer.start();
-	_reloadBar.show();
+	#_reloadBar.show();
 
 func reload():
 	_ammo = _maxAmmo;
 	ammo_changed.emit();
-	_reloadBar.hide();
+	#_reloadBar.hide();
 	_reloadTimer.stop();
 
 func _shootTimer_timeout():
