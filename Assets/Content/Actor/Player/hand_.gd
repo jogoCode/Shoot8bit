@@ -1,9 +1,13 @@
 extends Node2D
 
 @export var _playerAnimation:PlayerAnimation;
+@export var _weaponSystem:WeaponSystem ;
 @export var _weaponSprite:Sprite2D;
 @export var _bulletOrigin:Node2D;
+@export var _oscillator:Oscillator;
 
+func _ready() -> void:
+	_weaponSystem.OnShooted.connect(_on_shoot);
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position());
@@ -17,3 +21,8 @@ func _process(delta: float) -> void:
 		_weaponSprite.flip_v = false;
 		_weaponSprite.offset.y = 0;
 		_bulletOrigin.position.y = 0;
+
+
+func _on_shoot():
+	_oscillator._add_velocity(20);
+	

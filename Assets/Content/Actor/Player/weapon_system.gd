@@ -20,6 +20,7 @@ var _canShoot = true;
 var _reloadBar;
 
 signal ammo_changed();
+signal OnShooted();
 
 
 
@@ -87,6 +88,7 @@ func shoot(bulletDir:Vector2):
 		return;
 	var bulletInst = _bullet.instantiate();
 	var cadence = _bulletCadence + Time.get_ticks_msec();
+	OnShooted.emit();
 	if bulletInst is ProjectileArea:
 		bulletInst.global_position = _spawnOrigin.global_position;
 		if bulletInst :
