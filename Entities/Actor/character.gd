@@ -31,12 +31,12 @@ func set_status(newStatus:CharacterStatus):
 func impulse(delta):
 	if _impulseVelocity.length() > 0:
 		_impulseVelocity = _impulseVelocity.lerp(Vector2.ZERO, _impulseFriction*delta);
-		if(_impulseVelocity.length() <= 0.1+_impulseFriction/2):
+		if(_impulseVelocity.length() <= 100):
 			_impulseVelocity = Vector2.ZERO;
 			#velocity = _lastVel;
 			return;
-		velocity.x = _vel.x+_impulseVelocity.x;
-		velocity.y = _vel.y+_impulseVelocity.y;
+		velocity.x = _impulseVelocity.x;
+		velocity.y = _impulseVelocity.y;
 
 func _physics_process(delta: float) -> void:
 	if _healthSystem._healthState == HealthSystem.HealthStates.DEAD:
@@ -54,4 +54,4 @@ func applyImpulse(force: Vector2,impulseFriction):
 
 func dash(direction):
 	_lastVel = velocity;
-	applyImpulse(direction*20,15);
+	applyImpulse(direction*20,1);

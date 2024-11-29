@@ -20,7 +20,6 @@ func init():
 		var resource := load(Audios.get_current_dir() + "/" + file);
 		if(!file.contains(".import")):
 			sounds.get_or_add(file.get_basename(),load(Audios.get_current_dir() + "/" + file));
-		print(resource,file);
 
 func play(sound_name:String,delay:float=0):
 	if is_activate:

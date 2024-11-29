@@ -140,7 +140,7 @@ position = Vector2(-4, 5)
 modulate = Color(0.0784314, 0.117647, 0.352941, 0.431373)
 z_index = -1
 texture_filter = 1
-position = Vector2(0.25, 4.25)
+position = Vector2(0, 4)
 texture = ExtResource("6_gydb4")
 
 [node name="PlayerMovement" type="Node" parent="."]

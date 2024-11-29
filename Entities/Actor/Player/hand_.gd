@@ -25,13 +25,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	progressive_rotate(delta);
-	#look_at(get_global_mouse_position());
-	if(get_global_mouse_position().x < global_position.x):
+
+	if(int(get_global_mouse_position().x) < global_position.x and int(get_global_mouse_position().x) != 0):
 		_playerAnimation.OnFlipH.emit(true);
 		_weaponSprite.flip_v = true;
 		_weaponSprite.offset.y = 3;
 		_bulletOrigin.position.y = -_bulletOriginStartPos.y;
-	if(get_global_mouse_position().x > global_position.x):
+	if(int(get_global_mouse_position().x) > global_position.x and int(get_global_mouse_position().x)!= 0):
 		_playerAnimation.OnFlipH.emit(false);
 		_weaponSprite.flip_v = false;
 		_weaponSprite.offset.y = 0;
