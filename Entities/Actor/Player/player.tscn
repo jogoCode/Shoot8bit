@@ -1,0 +1,228 @@
+[gd_scene load_steps=29 format=3 uid="uid://cvw7nc4vagkpp"]
+
+[ext_resource type="Script" path="res://Entities/Actor/Player/CharacterPlayer2D.gd" id="1_rxbs3"]
+[ext_resource type="Texture2D" uid="uid://bf8iabkrxrfpg" path="res://Assets/Sprites/Player/Soldier.png" id="2_les7x"]
+[ext_resource type="Texture2D" uid="uid://d3f6arwtod1q4" path="res://Assets/Sprites/Player/Soldier_slide.png" id="3_fitdf"]
+[ext_resource type="Script" path="res://Entities/Actor/Player/hand_.gd" id="4_3mua5"]
+[ext_resource type="Texture2D" uid="uid://cfk5p1c4jfk34" path="res://Assets/Sprites/Weapon/weapon_sprite.png" id="5_q7o0b"]
+[ext_resource type="Texture2D" uid="uid://dp6tx54jhjbfb" path="res://Assets/Sprites/Player/Hand_Soldier.png" id="6_uqxtr"]
+[ext_resource type="Script" path="res://Common/Oscillator2D/osc_scale.gd" id="7_7uve4"]
+[ext_resource type="Texture2D" uid="uid://s5ytroc1f6am" path="res://Assets/Sprites/FX/shadow_fx.png" id="8_mcuq2"]
+[ext_resource type="Script" path="res://Entities/Actor/Player/player_movement.gd" id="9_vi2el"]
+[ext_resource type="Script" path="res://Entities/Actor/Player/player_animation_manager.gd" id="10_oebc3"]
+[ext_resource type="Script" path="res://Common/JaugeSystem/HealthSystem.gd" id="11_03t0c"]
+[ext_resource type="Script" path="res://Entities/Actor/input_manager.gd" id="12_qdnrv"]
+[ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system.gd" id="13_ewsfv"]
+[ext_resource type="Resource" uid="uid://cqinmishtua2r" path="res://Ressources/Weapons/w_gun.tres" id="14_0ebyw"]
+[ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system_feedback.gd" id="15_ospnu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hk43c"]
+radius = 3.25
+height = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow6cv"]
+atlas = ExtResource("2_les7x")
+region = Rect2(38, 16, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_152ky"]
+atlas = ExtResource("2_les7x")
+region = Rect2(19, 16, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3frt"]
+atlas = ExtResource("2_les7x")
+region = Rect2(0, 16, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86p61"]
+atlas = ExtResource("2_les7x")
+region = Rect2(0, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8ovr"]
+atlas = ExtResource("2_les7x")
+region = Rect2(19, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k81i"]
+atlas = ExtResource("2_les7x")
+region = Rect2(38, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwusw"]
+atlas = ExtResource("2_les7x")
+region = Rect2(57, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a54n6"]
+atlas = ExtResource("3_fitdf")
+region = Rect2(0, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08hl5"]
+atlas = ExtResource("3_fitdf")
+region = Rect2(19, 0, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tweu6"]
+atlas = ExtResource("3_fitdf")
+region = Rect2(38, 0, 19, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8m4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow6cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_152ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3frt")
+}],
+"loop": true,
+"name": &"Back",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86p61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8ovr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k81i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwusw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3frt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_152ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow6cv")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a54n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08hl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tweu6")
+}],
+"loop": false,
+"name": &"Slide",
+"speed": 5.0
+}]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gk5ab"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("HandOrigin:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("HandOrigin:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("HandOrigin/WeaponSprite:flip_v")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("HandOrigin/WeaponSprite:offset")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("HandOrigin/BulletOrigin:position")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("AnimatedSprite2D:animation")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("AnimatedSprite2D:frame")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("AnimatedSprite2D:flip_h")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_weaponSystem", "_playerMovement")]
+collision_mask = 0
+script = ExtResource("1_rxbs3")
+_weaponSystem = NodePath("WeaponSystem")
+_playerMovement = NodePath("PlayerMovement")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("CapsuleShape2D_hk43c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -0.25)
+sprite_frames = SubResource("SpriteFrames_f8m4r")
+animation = &"Slide"
+
+[node name="HandOrigin" type="Node2D" parent="." node_paths=PackedStringArray("_bulletOrigin", "_oscillator")]
+position = Vector2(0.5, 0.75)
+script = ExtResource("4_3mua5")
+_bulletOrigin = NodePath("BulletOrigin")
+_oscillator = NodePath("OscillatorScale")
+
+[node name="WeaponSprite" type="Sprite2D" parent="HandOrigin"]
+texture_filter = 1
+position = Vector2(6, -1.5)
+texture = ExtResource("5_q7o0b")
+
+[node name="HandSprite2D" type="Sprite2D" parent="HandOrigin"]
+texture_filter = 1
+position = Vector2(4, 0)
+texture = ExtResource("6_uqxtr")
+
+[node name="BulletOrigin" type="Node2D" parent="HandOrigin"]
+
+[node name="OscillatorScale" type="Node" parent="HandOrigin" node_paths=PackedStringArray("_target")]
+script = ExtResource("7_7uve4")
+_target = NodePath("..")
+
+[node name="DustOrigin" type="Node2D" parent="."]
+position = Vector2(-4, 5)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.117647, 0.352941, 0.431373)
+z_index = -1
+texture_filter = 1
+position = Vector2(0, 4)
+texture = ExtResource("8_mcuq2")
+
+[node name="PlayerMovement" type="Node" parent="."]
+script = ExtResource("9_vi2el")
+SPEED = 100.0
+ACCEL = 8
+
+[node name="PlayerAnimation" type="Node" parent="." node_paths=PackedStringArray("_animatedSprite", "_dustOrigin")]
+script = ExtResource("10_oebc3")
+_animatedSprite = NodePath("../AnimatedSprite2D")
+_dustOrigin = NodePath("../DustOrigin")
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("11_03t0c")
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("12_qdnrv")
+
+[node name="WeaponSystem" type="Node" parent="." node_paths=PackedStringArray("_weaponVisual", "_spawnOrigin")]
+script = ExtResource("13_ewsfv")
+_weaponData = ExtResource("14_0ebyw")
+_weaponVisual = NodePath("../HandOrigin/WeaponSprite")
+_spawnOrigin = NodePath("../HandOrigin/BulletOrigin")
+
+[node name="WeaponSystemFeedback" type="Node" parent="WeaponSystem"]
+script = ExtResource("15_ospnu")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_gk5ab")

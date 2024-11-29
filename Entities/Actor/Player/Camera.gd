@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends Camera2D
 class_name Camera
 
 @export var _target:Node2D;

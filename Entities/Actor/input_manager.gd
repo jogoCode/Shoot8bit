@@ -9,6 +9,7 @@ func _physics_process(delta: float) -> void:
 	character_actions(delta);
 
 func character_actions(delta):
+	if not _character.is_multiplayer_authority(): return;
 	if _character.get("_status") == Character2D.CharacterStatus.NOT_ACTIVE:
 		return;
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

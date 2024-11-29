@@ -101,7 +101,7 @@ func shoot(bulletDir:Vector2):
 			bulletInst._owner = _owner;
 			_shootTimer.start();
 			_canShoot = false;
-			_owner.owner.add_child(bulletInst);
+			get_tree().current_scene.add_child(bulletInst);
 			if _owner._target:
 				if _owner._target._status == Character2D.CharacterStatus.ACTIVE:
 					bulletInst._target = _owner._target;

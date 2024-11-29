@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var _owner:Character2D = get_parent();
 @onready var _playerAnimation:PlayerAnimation = get_parent().get_node("PlayerAnimation");
 @onready var _weaponSystem:WeaponSystem = get_parent().get_node("WeaponSystem");
 @onready var _weaponSprite:Sprite2D  = get_parent().get_node("HandOrigin/WeaponSprite");
@@ -24,6 +25,7 @@ func _ready() -> void:
 	_weaponSystem.OnShooted.connect(_on_shoot);
 
 func _process(delta: float) -> void:
+	if not _owner.is_multiplayer_authority(): return;
 	progressive_rotate(delta);
 
 	if(int(get_global_mouse_position().x) < global_position.x and int(get_global_mouse_position().x) != 0):
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 		_bulletOrigin.position.y = _bulletOriginStartPos.y;
 
 func progressive_rotate(delta:float):
+	if not _owner.is_multiplayer_authority(): return;
 	var vect = get_global_mouse_position();
 	var direction = (vect - global_position).normalized();
 	var angle = direction.angle();

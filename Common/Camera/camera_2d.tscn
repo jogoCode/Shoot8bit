@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cki527vb8s047"]
+
+[ext_resource type="Script" path="res://Entities/Actor/Player/Camera.gd" id="1_orihb"]
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2(0.5, 0.75)
+zoom = Vector2(4, 4)
+script = ExtResource("1_orihb")
+_speed = 15.0

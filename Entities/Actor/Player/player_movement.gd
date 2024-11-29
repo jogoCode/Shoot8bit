@@ -15,6 +15,7 @@ func _ready() -> void:
 	inputManager.OnDirectionInput.connect(_on_direction_input);
 
 func _physics_process(delta: float) -> void:
+	if not _owner.is_multiplayer_authority(): return;
 	if _direction:
 		_owner._lastVel = _direction;
 		_velocity.x = lerp(_velocity.x,_direction.x * SPEED,ACCEL*delta);
