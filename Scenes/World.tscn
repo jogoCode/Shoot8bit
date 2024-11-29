@@ -16,6 +16,7 @@ texture = ExtResource("1_qgmew")
 2:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_sgi8t"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pu0er")
 
 [node name="World" type="Node2D"]
@@ -38,3 +39,6 @@ spawn_path = NodePath("..")
 
 [node name="BloodParticle" parent="." instance=ExtResource("5_yi0b7")]
 position = Vector2(45, 8)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+attenuation = 6.06286

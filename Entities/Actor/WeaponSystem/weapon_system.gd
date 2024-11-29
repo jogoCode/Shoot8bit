@@ -114,7 +114,7 @@ func instantiate_shoot(bulletDir:Vector2):
 
 func reload_start_timer():
 	if(_ammo != _maxAmmo and _reloadTimer.is_stopped()):
-		SoundFxManager.play(_weaponData._reloadSound);
+		Sound2dManager.play(_weaponData._reloadSound,_owner.global_position);
 		_reloadTimer.start();
 	#_reloadBar.show();
 

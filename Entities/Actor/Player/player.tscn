@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cvw7nc4vagkpp"]
+[gd_scene load_steps=32 format=3 uid="uid://cvw7nc4vagkpp"]
 
 [ext_resource type="Script" path="res://Entities/Actor/Player/CharacterPlayer2D.gd" id="1_rxbs3"]
 [ext_resource type="Texture2D" uid="uid://bf8iabkrxrfpg" path="res://Assets/Sprites/Player/Soldier.png" id="2_les7x"]
@@ -20,35 +20,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hk43c"]
 radius = 3.25
 height = 14.0
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gk5ab"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath("HandOrigin:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("HandOrigin:scale")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath("HandOrigin/WeaponSprite:flip_v")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath("HandOrigin/WeaponSprite:offset")
-properties/4/spawn = true
-properties/4/replication_mode = 1
-properties/5/path = NodePath("HandOrigin/BulletOrigin:position")
-properties/5/spawn = true
-properties/5/replication_mode = 1
-properties/6/path = NodePath("AnimatedSprite2D:animation")
-properties/6/spawn = true
-properties/6/replication_mode = 1
-properties/7/path = NodePath("AnimatedSprite2D:frame")
-properties/7/spawn = true
-properties/7/replication_mode = 1
-properties/8/path = NodePath("AnimatedSprite2D:flip_h")
-properties/8/spawn = true
-properties/8/replication_mode = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rg70a"]
 radius = 7.0
@@ -156,6 +127,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_twdhb"]
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gk5ab"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("HandOrigin:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("HandOrigin:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("HandOrigin/WeaponSprite:flip_v")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("HandOrigin/WeaponSprite:offset")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("HandOrigin/BulletOrigin:position")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("AnimatedSprite2D:animation")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("AnimatedSprite2D:frame")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("AnimatedSprite2D:flip_h")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("Label:text")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("HealthSystem:_actualValue")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_weaponSystem", "_playerMovement")]
 collision_mask = 0
 script = ExtResource("1_rxbs3")
@@ -224,20 +234,31 @@ _spawnOrigin = NodePath("../HandOrigin/BulletOrigin")
 [node name="WeaponSystemFeedback" type="Node" parent="WeaponSystem"]
 script = ExtResource("15_ospnu")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_gk5ab")
+[node name="OscillatorScale" type="Node" parent="." node_paths=PackedStringArray("_target")]
+script = ExtResource("7_7uve4")
+_target = NodePath("../AnimatedSprite2D")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_rg70a")
 
-[node name="OscillatorScale" type="Node" parent="." node_paths=PackedStringArray("_target")]
-script = ExtResource("7_7uve4")
-_target = NodePath("../AnimatedSprite2D")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -0.25)
 sprite_frames = SubResource("SpriteFrames_f8m4r")
 animation = &"Idle"
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -5.0
+offset_top = -16.0
+offset_right = 37.0
+offset_bottom = 7.0
+scale = Vector2(0.25, 0.25)
+text = "JOGO"
+label_settings = SubResource("LabelSettings_twdhb")
+horizontal_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_gk5ab")

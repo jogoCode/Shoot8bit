@@ -18,9 +18,6 @@ func _ready() -> void:
 	actualValueChanged.connect(_death);
 	await get_tree().create_timer(0.5);
 
-func _process(delta: float) -> void:
-	pass
-
 func _take_damage(damage,damager):
 	_set_actual_value(-damage,true);
 	var oscillator:Oscillator = get_parent().get_node("OscillatorScale");

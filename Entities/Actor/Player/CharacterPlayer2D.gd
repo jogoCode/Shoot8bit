@@ -18,6 +18,8 @@ func _ready() -> void:
 	_camera._target = get_node("HandOrigin/BulletOrigin");
 	get_tree().current_scene.add_child(camInst);
 	_camera.make_current();
+	_camera.get_node("AudioListener2D").current = true;
+	
 	
 
 func shoot():
@@ -26,7 +28,7 @@ func shoot():
 func slide():
 	if(int(_impulseVelocity.length()) == 0):
 		OnSlide.emit();
-		SoundFxManager.play("Slide");
+		Sound2dManager.play("Slide",global_position);
 		applyImpulse(_lastVel*400,5);	
 
 func reload():

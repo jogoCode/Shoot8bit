@@ -16,9 +16,8 @@ func init():
 	if Audios == null: printerr("Could not open folder"); return
 	Audios.list_dir_begin();
 	for file: String in Audios.get_files():
-		
-		var resource := load(Audios.get_current_dir() + "/" + file);
 		if(!file.contains(".import")):
+			var resource := load(Audios.get_current_dir() + "/" + file);
 			sounds.get_or_add(file.get_basename(),load(Audios.get_current_dir() + "/" + file));
 
 func play(sound_name:String,delay:float=0):

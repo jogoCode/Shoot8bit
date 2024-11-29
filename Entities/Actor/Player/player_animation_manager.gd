@@ -57,7 +57,7 @@ func _on_frame_changed():
 		var dustFxInst = load("res://Entities/FX/dust_fx.tscn").instantiate();
 		dustFxInst.global_position = _dustOrigin.global_position;
 		get_tree().get_current_scene().add_child(dustFxInst);
-		SoundFxManager.play("footstep_carpet");
+		Sound2dManager.play("footstep_carpet",_character.global_position);
 
 func _on_animation_finished():
 	if(get_animation() == "Slide"):

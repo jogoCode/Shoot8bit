@@ -15,5 +15,5 @@ func _on_shoot():
 @rpc("call_local")
 func _on_shoot_rpc():
 	var muzzleFx = _muzzleFx.instantiate();
-	SoundFxManager.play(_weaponSystem._weaponData._shootSound);
+	Sound2dManager.play(_weaponSystem._weaponData._shootSound,owner.global_position);
 	_weaponSystem._spawnOrigin.add_child(muzzleFx);
