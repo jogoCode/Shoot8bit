@@ -82,7 +82,7 @@ func _process(delta: float) -> void:
 		_ammo = 0;
 		_canShoot = false;
 
-
+@rpc("call_local")
 func shoot(bulletDir:Vector2):
 	if _ammo <=0 and _reloadTimer.time_left == 0:
 		reload_start_timer();

@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 
 func shoot():
-	_weaponSystem.shoot(get_local_mouse_position().normalized()*3);
+	_weaponSystem.shoot.rpc(get_local_mouse_position().normalized()*3);
 	
 func slide():
 	if(int(_impulseVelocity.length()) == 0):

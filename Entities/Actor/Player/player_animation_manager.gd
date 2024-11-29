@@ -19,7 +19,7 @@ func _connect_signals():
 	_playerMovement.OnMovement.connect(move_animation);
 	_character.OnSlide.connect(slide_animation);
 	OnFlipH.connect(flip_h);
-	_animatedSprite.frame_changed.connect(_on_walk);
+	_animatedSprite.frame_changed.connect(_on_frame_changed);
 	_animatedSprite.animation_finished.connect(_on_animation_finished);
 
 func _process(delta: float) -> void:
@@ -48,7 +48,11 @@ func flip_h(active:bool):
 	_animatedSprite.flip_h = active;
 
 #region SIGNALS 
-func _on_walk():
+func _on_frame_changed():
+	if(_animatedSprite.animation == "Slide"):
+		var dustFxInst = load("res://Entities/FX/dust_fx.tscn").instantiate();
+		dustFxInst.global_position = _dustOrigin.global_position;
+		get_tree().get_current_scene().add_child(dustFxInst);
 	if(_animatedSprite.frame == 0 and _animatedSprite.animation == "Run"):
 		var dustFxInst = load("res://Entities/FX/dust_fx.tscn").instantiate();
 		dustFxInst.global_position = _dustOrigin.global_position;

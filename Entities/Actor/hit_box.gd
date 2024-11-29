@@ -2,7 +2,7 @@ extends Area2D
 class_name Hitbox
 
 var _owner;
-var damage;
+@export var damage;
 
 func _ready() -> void:
 	area_entered.connect(_area_entered);

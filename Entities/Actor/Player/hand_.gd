@@ -20,8 +20,6 @@ func _ready() -> void:
 	if(!_oscillator):
 		printerr("oscillator value is null !");
 		
-	
-		
 	_weaponSystem.OnShooted.connect(_on_shoot);
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -43,8 +41,7 @@ func progressive_rotate(delta:float):
 	var vect = get_global_mouse_position();
 	var direction = (vect - global_position).normalized();
 	var angle = direction.angle();
-	rotation = lerp_angle(rotation,angle,15*delta);
-
+	rotation = lerp_angle(rotation,angle,55*delta);
 
 func _on_shoot():
 	_oscillator._add_velocity(20);

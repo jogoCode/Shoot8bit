@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Common/JaugeSystem/HealthSystem.gd" id="11_03t0c"]
 [ext_resource type="Script" path="res://Entities/Actor/input_manager.gd" id="12_qdnrv"]
 [ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system.gd" id="13_ewsfv"]
-[ext_resource type="Resource" uid="uid://bg82gnosnlkdy" path="res://Ressources/Weapons/w_m16.tres" id="14_vlka0"]
+[ext_resource type="Resource" uid="uid://cguq7xd8s4urj" path="res://Ressources/Weapons/w_ak.tres" id="14_tjcd2"]
 [ext_resource type="PackedScene" uid="uid://bsxy6haadrbwd" path="res://Entities/Projectile/projectile.tscn" id="15_6sy8a"]
 [ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system_feedback.gd" id="15_ospnu"]
 
@@ -162,12 +162,6 @@ _playerMovement = NodePath("PlayerMovement")
 position = Vector2(0.5, -1)
 shape = SubResource("CapsuleShape2D_hk43c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -0.25)
-sprite_frames = SubResource("SpriteFrames_f8m4r")
-animation = &"Slide"
-
 [node name="HandOrigin" type="Node2D" parent="." node_paths=PackedStringArray("_bulletOrigin", "_oscillator")]
 position = Vector2(0.5, 0.75)
 script = ExtResource("4_3mua5")
@@ -192,6 +186,12 @@ _target = NodePath("..")
 
 [node name="DustOrigin" type="Node2D" parent="."]
 position = Vector2(-4, 5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -0.25)
+sprite_frames = SubResource("SpriteFrames_f8m4r")
+animation = &"Slide"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0.0784314, 0.117647, 0.352941, 0.431373)
@@ -218,7 +218,7 @@ script = ExtResource("12_qdnrv")
 
 [node name="WeaponSystem" type="Node" parent="." node_paths=PackedStringArray("_weaponVisual", "_spawnOrigin")]
 script = ExtResource("13_ewsfv")
-_weaponData = ExtResource("14_vlka0")
+_weaponData = ExtResource("14_tjcd2")
 _bullet = ExtResource("15_6sy8a")
 _weaponVisual = NodePath("../HandOrigin/WeaponSprite")
 _spawnOrigin = NodePath("../HandOrigin/BulletOrigin")
