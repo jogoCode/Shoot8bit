@@ -2,6 +2,8 @@ extends CanvasLayer
 
 
 @onready var _addressField:LineEdit = get_node("MainMenu/MarginContainer/VBoxContainer/AddressField");
+@onready var _pseudoField:LineEdit = get_node("MainMenu/MarginContainer/VBoxContainer/PseudoField");
+
 
 const PLAYER = preload("res://Entities/Actor/Player/player.tscn");
 const PORT = 9999;
@@ -35,4 +37,5 @@ func _on_join_button_pressed() -> void:
 func add_player(peer_id):
 	var player = PLAYER.instantiate();
 	player.name = str(peer_id);
+	player._pseudo = _pseudoField.text;
 	get_tree().current_scene.add_child(player);

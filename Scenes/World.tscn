@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://cvxiqdf7hqg4w"]
+[gd_scene load_steps=8 format=4 uid="uid://cvxiqdf7hqg4w"]
 
 [ext_resource type="Texture2D" uid="uid://dyr8crk70wvkn" path="res://Assets/Sprites/Tilemap.png" id="1_qgmew"]
 [ext_resource type="PackedScene" uid="uid://c7albe65iewue" path="res://Entities/FX/dust_fx.tscn" id="2_pws56"]
 [ext_resource type="PackedScene" uid="uid://cki527vb8s047" path="res://Common/Camera/camera_2d.tscn" id="3_bmt6e"]
 [ext_resource type="PackedScene" uid="uid://3lvufu1gcvh2" path="res://Common/Online/online.tscn" id="4_ye7es"]
+[ext_resource type="PackedScene" uid="uid://dut3xr8wixv6e" path="res://Assets/Sprites/FX/blood_particle.tscn" id="5_yi0b7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pu0er"]
 texture = ExtResource("1_qgmew")
@@ -34,3 +35,6 @@ tile_set = SubResource("TileSet_sgi8t")
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Entities/Actor/Player/player.tscn")
 spawn_path = NodePath("..")
+
+[node name="BloodParticle" parent="." instance=ExtResource("5_yi0b7")]
+position = Vector2(45, 8)

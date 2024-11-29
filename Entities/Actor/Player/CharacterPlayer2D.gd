@@ -3,6 +3,7 @@ class_name CharacterPlayer2D
 
 @export var _weaponSystem:WeaponSystem;
 @export var _playerMovement:PlayerMovement;
+var _pseudo:String;
 var _camera:Camera;
 
 signal OnSlide();
@@ -20,7 +21,7 @@ func _ready() -> void:
 	
 
 func shoot():
-	_weaponSystem.shoot.rpc(get_local_mouse_position().normalized()*3);
+	_weaponSystem.shoot(get_local_mouse_position().normalized()*3);
 	
 func slide():
 	if(int(_impulseVelocity.length()) == 0):

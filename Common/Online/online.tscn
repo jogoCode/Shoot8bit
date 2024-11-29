@@ -42,6 +42,10 @@ layout_mode = 2
 text = "Online panel
 "
 
+[node name="PseudoField" type="LineEdit" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Pseudo"
+
 [node name="HostButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "HOST

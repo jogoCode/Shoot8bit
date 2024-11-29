@@ -23,8 +23,11 @@ func _process(delta: float) -> void:
 
 func _take_damage(damage,damager):
 	_set_actual_value(-damage,true);
+	var oscillator:Oscillator = get_parent().get_node("OscillatorScale");
+	if oscillator:
+		oscillator._add_velocity(damage*2);
 	if damager:
-		_killer = damager.name;
+		_killer = damager._pseudo;
 
 
 
@@ -33,6 +36,8 @@ func _death():
 		return;
 	if _owner is Character2D:
 		_owner.set_status(Character2D.CharacterStatus.NOT_ACTIVE);
-	print(_owner.name," was killed by",_killer);
+#region for Online
+	print(_owner._pseudo," was killed by",_killer);
+#endregion
 	_owner.hide();
 	_healthState = HealthStates.DEAD;

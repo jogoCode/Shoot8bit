@@ -82,13 +82,18 @@ func _process(delta: float) -> void:
 		_ammo = 0;
 		_canShoot = false;
 
-@rpc("call_local")
+#@rpc("call_local")
 func shoot(bulletDir:Vector2):
 	if _ammo <=0 and _reloadTimer.time_left == 0:
 		reload_start_timer();
 		print("RELOAD");
 	if !_canShoot or _ammo <=0 or !_reloadTimer.is_stopped():
 		return;
+	
+	instantiate_shoot.rpc(bulletDir);
+	
+@rpc("call_local")
+func instantiate_shoot(bulletDir:Vector2):
 	var bulletInst = _bullet.instantiate();
 	var cadence = _bulletCadence + Time.get_ticks_msec();
 	OnShooted.emit();
@@ -105,6 +110,7 @@ func shoot(bulletDir:Vector2):
 			if _owner._target:
 				if _owner._target._status == Character2D.CharacterStatus.ACTIVE:
 					bulletInst._target = _owner._target;
+	
 
 func reload_start_timer():
 	if(_ammo != _maxAmmo and _reloadTimer.is_stopped()):

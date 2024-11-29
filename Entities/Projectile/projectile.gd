@@ -23,6 +23,5 @@ func _area_entered(area):
 	super._area_entered(area);
 	if !(area is ProjectileArea ):
 		hide();
-		get_child(0).shape = null;
 		await get_tree().create_timer(0.5).timeout;
 		queue_free();
