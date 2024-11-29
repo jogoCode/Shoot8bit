@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RWeapon" load_steps=4 format=3 uid="uid://bg82gnosnlkdy"]
+
+[ext_resource type="PackedScene" uid="uid://bsxy6haadrbwd" path="res://Entities/Projectile/projectile.tscn" id="1_561o2"]
+[ext_resource type="Texture2D" uid="uid://clmf1ge1bj6s1" path="res://Assets/Sprites/Weapon/weapon_m16_sprite.png" id="2_t0iu8"]
+[ext_resource type="Script" path="res://Ressources/Weapons/r_weapon.gd" id="3_6ygi6"]
+
+[resource]
+script = ExtResource("3_6ygi6")
+_name = "M-16"
+_cadence = 0.4
+_reloadTime = 2.0
+_camShakeAmount = 0.0
+_maxAmmo = 25
+_sprite = ExtResource("2_t0iu8")
+_projectile = ExtResource("1_561o2")
+_shootSound = "ak"
+_reloadSound = "ak_reload"
+_muzzleOffset = Vector2(15.5, -2)

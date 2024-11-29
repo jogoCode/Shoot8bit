@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cvw7nc4vagkpp"]
+[gd_scene load_steps=30 format=3 uid="uid://cvw7nc4vagkpp"]
 
 [ext_resource type="Script" path="res://Entities/Actor/Player/CharacterPlayer2D.gd" id="1_rxbs3"]
 [ext_resource type="Texture2D" uid="uid://bf8iabkrxrfpg" path="res://Assets/Sprites/Player/Soldier.png" id="2_les7x"]
@@ -13,7 +13,8 @@
 [ext_resource type="Script" path="res://Common/JaugeSystem/HealthSystem.gd" id="11_03t0c"]
 [ext_resource type="Script" path="res://Entities/Actor/input_manager.gd" id="12_qdnrv"]
 [ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system.gd" id="13_ewsfv"]
-[ext_resource type="Resource" uid="uid://cqinmishtua2r" path="res://Ressources/Weapons/w_gun.tres" id="14_0ebyw"]
+[ext_resource type="Resource" uid="uid://bg82gnosnlkdy" path="res://Ressources/Weapons/w_m16.tres" id="14_vlka0"]
+[ext_resource type="PackedScene" uid="uid://bsxy6haadrbwd" path="res://Entities/Projectile/projectile.tscn" id="15_6sy8a"]
 [ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system_feedback.gd" id="15_ospnu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hk43c"]
@@ -217,7 +218,8 @@ script = ExtResource("12_qdnrv")
 
 [node name="WeaponSystem" type="Node" parent="." node_paths=PackedStringArray("_weaponVisual", "_spawnOrigin")]
 script = ExtResource("13_ewsfv")
-_weaponData = ExtResource("14_0ebyw")
+_weaponData = ExtResource("14_vlka0")
+_bullet = ExtResource("15_6sy8a")
 _weaponVisual = NodePath("../HandOrigin/WeaponSprite")
 _spawnOrigin = NodePath("../HandOrigin/BulletOrigin")
 

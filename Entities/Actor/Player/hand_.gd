@@ -24,9 +24,9 @@ func _ready() -> void:
 		
 	_weaponSystem.OnShooted.connect(_on_shoot);
 
-func _process(delta: float) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not _owner.is_multiplayer_authority(): return;
-	progressive_rotate(delta);
+	progressive_rotate(get_process_delta_time());
 
 	if(int(get_global_mouse_position().x) < global_position.x and int(get_global_mouse_position().x) != 0):
 		_playerAnimation.OnFlipH.emit(true);
@@ -40,7 +40,6 @@ func _process(delta: float) -> void:
 		_bulletOrigin.position.y = _bulletOriginStartPos.y;
 
 func progressive_rotate(delta:float):
-	if not _owner.is_multiplayer_authority(): return;
 	var vect = get_global_mouse_position();
 	var direction = (vect - global_position).normalized();
 	var angle = direction.angle();
