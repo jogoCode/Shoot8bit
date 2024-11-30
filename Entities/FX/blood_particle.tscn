@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://dut3xr8wixv6e"]
+
+[ext_resource type="Texture2D" uid="uid://4ugqjsddjf2f" path="res://Assets/Sprites/FX/blood_fx.png" id="1_62nml"]
+[ext_resource type="Script" path="res://Entities/FX/particle_fx.gd" id="2_c2cx0"]
+[ext_resource type="Texture2D" uid="uid://s5ytroc1f6am" path="res://Assets/Sprites/FX/shadow_fx.png" id="3_ap45f"]
+
+[sub_resource type="Curve" id="Curve_0n5ko"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.637363), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jfty7"]
+curve = SubResource("Curve_0n5ko")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xcdqb"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 12.72
+angular_velocity_min = -41.54
+angular_velocity_max = 69.23
+gravity = Vector3(0, 7, 0)
+scale_curve = SubResource("CurveTexture_jfty7")
+color = Color(0.705882, 0.12549, 0.164706, 1)
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+
+[sub_resource type="Curve" id="Curve_ta3h0"]
+_data = [Vector2(0, 0.892027), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8nr12"]
+curve = SubResource("Curve_ta3h0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vwbc3"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.6
+color = Color(0.705882, 0.12549, 0.164706, 1)
+alpha_curve = SubResource("CurveTexture_8nr12")
+
+[node name="BloodParticle" type="GPUParticles2D" node_paths=PackedStringArray("_particleToFinished")]
+emitting = false
+amount = 10
+sub_emitter = NodePath("GPUParticles2D")
+process_material = SubResource("ParticleProcessMaterial_xcdqb")
+texture = ExtResource("1_62nml")
+lifetime = 2.0
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+script = ExtResource("2_c2cx0")
+_particleToFinished = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -2
+texture_filter = 1
+process_material = SubResource("ParticleProcessMaterial_vwbc3")
+texture = ExtResource("3_ap45f")
+lifetime = 10.0

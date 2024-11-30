@@ -14,7 +14,7 @@ func _area_entered(area):
 		if area.name != "Hurtbox":
 			return;
 		print("HIT",area.owner._pseudo);
-		var bloodInst = preload("res://Assets/Sprites/FX/blood_particle.tscn").instantiate();
+		var bloodInst = preload("res://Entities/FX/blood_particle.tscn").instantiate();
 		bloodInst.global_position = area.get_parent().global_position;
 		get_tree().current_scene.add_child(bloodInst)
 		for node in area.owner.get_children():

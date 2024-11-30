@@ -13,8 +13,9 @@ properties/0/replication_mode = 1
 
 [node name="projectile" type="Area2D"]
 script = ExtResource("1_ydtjb")
+_lifeTime = null
 _speed = 125.0
-_damage = 5
+_damage = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_w2w6w")

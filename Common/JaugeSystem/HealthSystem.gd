@@ -19,7 +19,8 @@ func _ready() -> void:
 	actualValueChanged.connect(_death);
 	OnDeath.connect(_owner._on_death);
 	await get_tree().create_timer(0.5);
-
+	
+@rpc("call_local")
 func _take_damage(damage,damager):
 	_set_actual_value(-damage,true);
 	var oscillator:Oscillator = get_parent().get_node("OscillatorScale");
@@ -27,7 +28,8 @@ func _take_damage(damage,damager):
 		oscillator._add_velocity(damage*2);
 	if damager:
 		_killer = damager._pseudo;
-
+		
+@rpc("call_local")
 func _death():
 	if _actualValue > 0:
 		return;

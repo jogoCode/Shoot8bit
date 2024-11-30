@@ -24,4 +24,4 @@ func _area_entered(area):
 	if !(area is ProjectileArea):
 		hide();
 		await get_tree().create_timer(0.5).timeout;
-		#queue_free();
+		queue_free();
