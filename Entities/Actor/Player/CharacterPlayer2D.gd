@@ -34,16 +34,22 @@ func slide():
 func reload():
 	_weaponSystem.reload();
 
+func _respawn():
+	global_position = Vector2.ZERO;
+	$Hurtbox/CollisionShape2D.disabled = false;
+	set_status(Character2D.CharacterStatus.ACTIVE);
+	_playerAnimation.change_animation("Die");
+	get_node("HandOrigin").show();
+
 func _on_death():
 	$Hurtbox/CollisionShape2D.disabled = true;
 	_playerAnimation.change_animation("Die");
 	get_node("HandOrigin").hide();
-	var hurtbox:Area2D = get_node("Hurtbox")
-	hurtbox.monitoring = false;
-	hurtbox.monitoring = true;
 	var pickup:Pickup = load("res://Entities/Pickups/pickup.tscn").instantiate();
 	pickup._weaponData = _weaponSystem._weaponData;
 	pickup.global_position = global_position + Vector2.UP*4;
 	await  get_tree().create_timer(0.1).timeout;
 	get_tree().current_scene.add_child(pickup);
 	pickup.show();
+	await  get_tree().create_timer(2).timeout;
+	_respawn()

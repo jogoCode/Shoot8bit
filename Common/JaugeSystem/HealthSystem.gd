@@ -19,7 +19,10 @@ func _ready() -> void:
 	actualValueChanged.connect(_death);
 	OnDeath.connect(_owner._on_death);
 	await get_tree().create_timer(0.5);
-	
+
+func revive():
+	pass
+
 @rpc("call_local")
 func _take_damage(damage,damager):
 	_set_actual_value(-damage,true);
