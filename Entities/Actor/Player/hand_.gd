@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not _owner.is_multiplayer_authority(): return;
+	if _owner._status == Character2D.CharacterStatus.NOT_ACTIVE: return;
 	progressive_rotate(get_process_delta_time());
 
 	if(int(get_global_mouse_position().x) < global_position.x and int(get_global_mouse_position().x) != 0):

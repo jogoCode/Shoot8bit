@@ -39,7 +39,7 @@ func _death():
 	print(_owner._pseudo," was killed by",_killer);
 	
 #endregion
-	_owner.hide();
+	#_owner.hide();
 	if(_healthState != HealthStates.DEAD):
 		OnDeath.emit();
 	_healthState = HealthStates.DEAD;

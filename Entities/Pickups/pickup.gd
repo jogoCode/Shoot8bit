@@ -7,6 +7,7 @@ class_name Pickup
 
 func _ready() -> void:
 	_area2d.area_entered.connect(_area_entered);
+	get_node("OscillatorScale")._add_velocity(40);
 	set_visual_weapon();
 	await get_tree().create_timer(0.7).timeout;
 	_area2d.monitoring = true;
@@ -24,6 +25,7 @@ func _area_entered(area:Area2D):
 	var other = area.get_parent();
 	
 	if(other is CharacterPlayer2D and other.visible == true):
+		if other._status == Character2D.CharacterStatus.NOT_ACTIVE: return;
 		var weaponSys:WeaponSystem = other.get_node("WeaponSystem");
 		var pickup:Pickup = load("res://Entities/Pickups/pickup.tscn").instantiate();
 		pickup._weaponData = other._weaponSystem._weaponData;

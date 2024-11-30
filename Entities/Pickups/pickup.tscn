@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://barx6g6og4upw"]
+[gd_scene load_steps=5 format=3 uid="uid://barx6g6og4upw"]
 
 [ext_resource type="Script" path="res://Entities/Pickups/pickup.gd" id="1_0vufd"]
 [ext_resource type="Texture2D" uid="uid://clmf1ge1bj6s1" path="res://Assets/Sprites/Weapon/weapon_m16_sprite.png" id="2_novcl"]
+[ext_resource type="Script" path="res://Common/Oscillator2D/osc_scale.gd" id="3_sc3q5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4et4w"]
 radius = 7.07107
@@ -19,3 +20,7 @@ shape = SubResource("CircleShape2D_4et4w")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_novcl")
+
+[node name="OscillatorScale" type="Node" parent="." node_paths=PackedStringArray("_target")]
+script = ExtResource("3_sc3q5")
+_target = NodePath("../Sprite2D")

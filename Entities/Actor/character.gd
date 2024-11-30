@@ -7,6 +7,7 @@ class_name Character2D
 
 @onready var _healthSystem:HealthSystem = get_node("HealthSystem");
 @export var _target:Character2D;
+@onready var _playerAnimation:PlayerAnimation = get_node("PlayerAnimation");
 
 var _impulseVelocity:Vector2;
 var _impulseFriction:float;

@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not _owner.is_multiplayer_authority(): return;
+	if(_owner._status != Character2D.CharacterStatus.ACTIVE): return;
 	if _direction:
 		_owner._lastVel = _direction;
 		_velocity.x = lerp(_velocity.x,_direction.x * SPEED,ACCEL*delta);
