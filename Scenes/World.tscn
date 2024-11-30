@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://cvxiqdf7hqg4w"]
+[gd_scene load_steps=10 format=4 uid="uid://cvxiqdf7hqg4w"]
 
 [ext_resource type="Texture2D" uid="uid://dyr8crk70wvkn" path="res://Assets/Sprites/Tilemap.png" id="1_qgmew"]
 [ext_resource type="PackedScene" uid="uid://c7albe65iewue" path="res://Entities/FX/dust_fx.tscn" id="2_pws56"]
 [ext_resource type="PackedScene" uid="uid://cki527vb8s047" path="res://Common/Camera/camera_2d.tscn" id="3_bmt6e"]
 [ext_resource type="PackedScene" uid="uid://3lvufu1gcvh2" path="res://Common/Online/online.tscn" id="4_ye7es"]
 [ext_resource type="PackedScene" uid="uid://dut3xr8wixv6e" path="res://Assets/Sprites/FX/blood_particle.tscn" id="5_yi0b7"]
+[ext_resource type="PackedScene" uid="uid://barx6g6og4upw" path="res://Entities/Pickups/pickup.tscn" id="6_88g81"]
+[ext_resource type="Resource" uid="uid://bg82gnosnlkdy" path="res://Ressources/Weapons/w_m16.tres" id="7_o7ucj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pu0er"]
 texture = ExtResource("1_qgmew")
@@ -42,3 +44,7 @@ position = Vector2(45, 8)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 attenuation = 6.06286
+
+[node name="Pickup" parent="." instance=ExtResource("6_88g81")]
+position = Vector2(17, 66)
+_weaponData = ExtResource("7_o7ucj")

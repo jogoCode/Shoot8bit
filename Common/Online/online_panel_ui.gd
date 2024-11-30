@@ -6,7 +6,7 @@ extends CanvasLayer
 
 
 const PLAYER = preload("res://Entities/Actor/Player/player.tscn");
-const PORT = 9999;
+const PORT = 6000;
 var _enet_peer = ENetMultiplayerPeer.new();
 
 func _ready() -> void:

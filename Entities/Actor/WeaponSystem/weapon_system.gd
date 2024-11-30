@@ -76,6 +76,10 @@ func set_weapon_stats():
 	_weaponVisual.texture = _weaponData._sprite;
 	_spawnOrigin.position = _weaponData._muzzleOffset;
 
+func change_weapon(newWeaponData:RWeapon):
+	_weaponData = newWeaponData;
+	set_weapon_stats();
+
 
 func _process(delta: float) -> void:
 	if _owner._status == Character2D.CharacterStatus.NOT_ACTIVE:

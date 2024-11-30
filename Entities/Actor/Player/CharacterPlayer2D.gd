@@ -33,3 +33,12 @@ func slide():
 
 func reload():
 	_weaponSystem.reload();
+
+func _on_death():
+	$Hurtbox/CollisionShape2D.disabled = true;
+	var pickup:Pickup = load("res://Entities/Pickups/pickup.tscn").instantiate();
+	pickup._weaponData = _weaponSystem._weaponData;
+	pickup.global_position = global_position;
+	await  get_tree().create_timer(0.1).timeout;
+	get_tree().current_scene.add_child(pickup);
+	pickup.show();

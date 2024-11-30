@@ -5,6 +5,7 @@ class_name HealthSystem
 var _healthState = HealthStates.ALIVE;
 var _killer:String;
 
+signal OnDeath();
 
 enum HealthStates{
 	ALIVE,
@@ -16,6 +17,7 @@ signal take_damage(damage,damager);
 func _ready() -> void:
 	take_damage.connect(_take_damage);
 	actualValueChanged.connect(_death);
+	OnDeath.connect(_owner._on_death);
 	await get_tree().create_timer(0.5);
 
 func _take_damage(damage,damager):
@@ -26,8 +28,6 @@ func _take_damage(damage,damager):
 	if damager:
 		_killer = damager._pseudo;
 
-
-
 func _death():
 	if _actualValue > 0:
 		return;
@@ -35,6 +35,9 @@ func _death():
 		_owner.set_status(Character2D.CharacterStatus.NOT_ACTIVE);
 #region for Online
 	print(_owner._pseudo," was killed by",_killer);
+	
 #endregion
 	_owner.hide();
+	if(_healthState != HealthStates.DEAD):
+		OnDeath.emit();
 	_healthState = HealthStates.DEAD;

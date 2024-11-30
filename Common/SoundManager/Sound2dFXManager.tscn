@@ -1,0 +1,20 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd4pw86ykr16l"]
+
+[ext_resource type="Script" path="res://Common/SoundManager/sound2D_manager.gd" id="1_pmy2w"]
+[ext_resource type="AudioStream" uid="uid://dcjehyn0bdg3y" path="res://Assets/Audio/Slide.wav" id="2_5kqxd"]
+[ext_resource type="AudioStream" uid="uid://dxvcmbl4fnq8s" path="res://Assets/Audio/ak.mp3" id="3_wxlkh"]
+[ext_resource type="AudioStream" uid="uid://diggb72cp0i5" path="res://Assets/Audio/ak_reload.wav" id="4_ndlpv"]
+[ext_resource type="AudioStream" uid="uid://c357w86xcjav1" path="res://Assets/Audio/footstep_carpet.ogg" id="5_8hd0t"]
+[ext_resource type="AudioStream" uid="uid://edhs3iv2pdq0" path="res://Assets/Audio/gun.wav" id="6_dfo4p"]
+[ext_resource type="AudioStream" uid="uid://cfjfyp3subs7i" path="res://Assets/Audio/gun_reload.wav" id="7_juv1h"]
+
+[node name="Sound2dFXManager" type="Node"]
+script = ExtResource("1_pmy2w")
+sounds = {
+"Slide": ExtResource("2_5kqxd"),
+"ak": ExtResource("3_wxlkh"),
+"ak_reload": ExtResource("4_ndlpv"),
+"footstep_carpet": ExtResource("5_8hd0t"),
+"gun": ExtResource("6_dfo4p"),
+"gun_reload": ExtResource("7_juv1h")
+}

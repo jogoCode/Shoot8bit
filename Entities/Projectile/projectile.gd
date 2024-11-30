@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 func _area_entered(area):
 	super._area_entered(area);
-	if !(area is ProjectileArea ):
+	if !(area is ProjectileArea):
 		hide();
 		await get_tree().create_timer(0.5).timeout;
-		queue_free();
+		#queue_free();
