@@ -58,7 +58,7 @@ func initialize():
 	if _weaponData:
 		set_weapon_stats();
 	
-
+@rpc("call_local")
 func set_weapon_stats():
 	_maxAmmo = _weaponData._maxAmmo;
 	_ammo = _maxAmmo;
@@ -75,10 +75,11 @@ func set_weapon_stats():
 		node.queue_free();
 	_weaponVisual.texture = _weaponData._sprite;
 	_spawnOrigin.position = _weaponData._muzzleOffset;
+	_canShoot = true;
 
 func change_weapon(newWeaponData:RWeapon):
 	_weaponData = newWeaponData;
-	set_weapon_stats();
+	set_weapon_stats.rpc();
 
 
 func _process(delta: float) -> void:
@@ -94,10 +95,10 @@ func shoot(bulletDir:Vector2):
 	if !_canShoot or _ammo <=0 or !_reloadTimer.is_stopped():
 		return;
 	
-	instantiate_shoot.rpc(bulletDir);
+	rpc_instantiate_shoot.rpc(bulletDir);
 	
 @rpc("call_local")
-func instantiate_shoot(bulletDir:Vector2):
+func rpc_instantiate_shoot(bulletDir:Vector2):
 	var bulletInst = _bullet.instantiate();
 	var cadence = _bulletCadence + Time.get_ticks_msec();
 	OnShooted.emit();
@@ -106,7 +107,7 @@ func instantiate_shoot(bulletDir:Vector2):
 		if bulletInst :
 			_ammo -=1;
 			ammo_changed.emit();
-			bulletInst._dir = bulletDir;
+			bulletInst._dir = bulletDir+Vector2(randf_range(-_weaponData._recoil,_weaponData._recoil),randf_range(-_weaponData._recoil,_weaponData._recoil));
 			bulletInst._owner = _owner;
 			_shootTimer.start();
 			_canShoot = false;

@@ -10,6 +10,7 @@ _name = "AK-47"
 _cadence = 0.15
 _reloadTime = 2.0
 _camShakeAmount = 0.0
+_recoil = 0.65
 _maxAmmo = 30
 _sprite = ExtResource("2_5b8kl")
 _projectile = ExtResource("1_s4frj")

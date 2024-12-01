@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://barx6g6og4upw"]
+[gd_scene load_steps=7 format=3 uid="uid://barx6g6og4upw"]
 
 [ext_resource type="Script" path="res://Entities/Pickups/pickup.gd" id="1_0vufd"]
 [ext_resource type="Texture2D" uid="uid://clmf1ge1bj6s1" path="res://Assets/Sprites/Weapon/weapon_m16_sprite.png" id="2_novcl"]
 [ext_resource type="Script" path="res://Common/Oscillator2D/osc_scale.gd" id="3_sc3q5"]
+[ext_resource type="Texture2D" uid="uid://s5ytroc1f6am" path="res://Assets/Sprites/FX/shadow_fx.png" id="4_my08d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4et4w"]
 radius = 7.07107
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jt2l6"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Pickup" type="Node2D"]
 script = ExtResource("1_0vufd")
@@ -24,3 +30,13 @@ texture = ExtResource("2_novcl")
 [node name="OscillatorScale" type="Node" parent="." node_paths=PackedStringArray("_target")]
 script = ExtResource("3_sc3q5")
 _target = NodePath("../Sprite2D")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.117647, 0.352941, 0.431373)
+z_index = -1
+texture_filter = 1
+position = Vector2(0, 4)
+texture = ExtResource("4_my08d")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_jt2l6")

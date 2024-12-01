@@ -19,18 +19,26 @@ func set_visual_weapon():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if(_area2d.get_overlapping_areas().is_empty()): 
+		for area in _area2d.get_overlapping_areas():
+			rpc_area_entered.rpc(area);
 
-func _area_entered(area:Area2D):
+@rpc("call_local")
+func rpc_area_entered(area:Area2D):
 	var other = area.get_parent();
-	
 	if(other is CharacterPlayer2D and other.visible == true):
+		if !other._isInteract : return;
 		if other._status == Character2D.CharacterStatus.NOT_ACTIVE: return;
 		var weaponSys:WeaponSystem = other.get_node("WeaponSystem");
 		var pickup:Pickup = load("res://Entities/Pickups/pickup.tscn").instantiate();
 		pickup._weaponData = other._weaponSystem._weaponData;
 		pickup.global_position = global_position;
-		get_tree().current_scene.add_child(pickup);
+		if(!other._weaponSystem._weaponData._name.contains("gun")):
+			get_tree().current_scene.add_child(pickup);
 		await get_tree().create_timer(0.1).timeout;
 		weaponSys.change_weapon(_weaponData);
 		queue_free();
+	
+
+func _area_entered(area:Area2D):
+	rpc_area_entered.rpc(area);

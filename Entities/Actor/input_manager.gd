@@ -29,6 +29,7 @@ func character_actions(delta):
 		_character._weaponSystem.reload_start_timer();
 	if Input.is_action_just_pressed("slide"):
 		_character.slide();
+	_character._isInteract = Input.is_action_just_pressed("interact");
 
 	#_character.boost(Input.is_action_pressed("boost"));
 	

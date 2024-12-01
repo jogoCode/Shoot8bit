@@ -49,8 +49,12 @@ func flip_h(active:bool):
 
 #region SIGNALS 
 func _on_frame_changed():
-	if(_animatedSprite.animation == "Slide"):
-		var dustFxInst = load("res://Entities/FX/dust_fx.tscn").instantiate();
+	if(_animatedSprite.frame == 1 and _animatedSprite.animation == "Slide"):
+		var dustFxInst:AnimatedSprite2D = load("res://Entities/FX/slide_dust_fx.tscn").instantiate();
+		if(_character._lastVel.x == -1):
+			dustFxInst.flip_h = true;
+		else:
+			dustFxInst.flip_h = false;
 		dustFxInst.global_position = _dustOrigin.global_position;
 		get_tree().get_current_scene().add_child(dustFxInst);
 	if(_animatedSprite.frame == 0 and _animatedSprite.animation == "Run"):

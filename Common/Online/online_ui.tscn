@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjfmkmibfsd6b"]
+
+[ext_resource type="Script" path="res://Common/Online/GameInstance.gd" id="1_4l46p"]
+
+[node name="OnlineUI" type="Node"]
+script = ExtResource("1_4l46p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -321.0
+offset_top = 11.0
+offset_right = -17.0
+offset_bottom = 34.0
+grow_horizontal = 0
+text = "
+"
+scroll_following = true

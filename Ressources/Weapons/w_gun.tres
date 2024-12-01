@@ -10,6 +10,7 @@ _name = "gun"
 _cadence = 1.0
 _reloadTime = 0.96
 _camShakeAmount = 0.0
+_recoil = 0.1
 _maxAmmo = 15
 _sprite = ExtResource("2_hxgtu")
 _projectile = ExtResource("1_r0fjk")

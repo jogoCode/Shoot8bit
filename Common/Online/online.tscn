@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3lvufu1gcvh2"]
 
-[ext_resource type="Script" path="res://Common/Online/online_panel_ui.gd" id="1_ioukf"]
+[ext_resource type="Script" path="res://Common/Online/online_panel.gd" id="1_ioukf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vecad"]
 bg_color = Color(0.2484, 0.2484, 0.2484, 1)

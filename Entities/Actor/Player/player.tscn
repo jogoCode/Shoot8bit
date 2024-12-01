@@ -11,9 +11,9 @@
 [ext_resource type="Script" path="res://Entities/Actor/Player/player_movement.gd" id="9_vi2el"]
 [ext_resource type="Script" path="res://Entities/Actor/Player/player_animation_manager.gd" id="10_oebc3"]
 [ext_resource type="Script" path="res://Common/JaugeSystem/HealthSystem.gd" id="11_03t0c"]
+[ext_resource type="Resource" uid="uid://cqinmishtua2r" path="res://Ressources/Weapons/w_gun.tres" id="12_1bu65"]
 [ext_resource type="Script" path="res://Entities/Actor/input_manager.gd" id="12_qdnrv"]
 [ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system.gd" id="13_ewsfv"]
-[ext_resource type="Resource" uid="uid://cguq7xd8s4urj" path="res://Ressources/Weapons/w_ak.tres" id="14_tjcd2"]
 [ext_resource type="PackedScene" uid="uid://bsxy6haadrbwd" path="res://Entities/Projectile/projectile.tscn" id="15_6sy8a"]
 [ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system_feedback.gd" id="15_ospnu"]
 [ext_resource type="Texture2D" uid="uid://w0tu7lrtnr3k" path="res://Assets/Sprites/Player/Soldier_die.png" id="16_hctl0"]
@@ -180,7 +180,7 @@ properties/10/spawn = true
 properties/10/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_weaponSystem", "_playerMovement")]
-collision_mask = 0
+y_sort_enabled = true
 script = ExtResource("1_rxbs3")
 _weaponSystem = NodePath("WeaponSystem")
 _playerMovement = NodePath("PlayerMovement")
@@ -217,6 +217,7 @@ position = Vector2(-4, 5)
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0.0784314, 0.117647, 0.352941, 0.431373)
 z_index = -1
+y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, 4)
 texture = ExtResource("8_mcuq2")
@@ -239,7 +240,7 @@ script = ExtResource("12_qdnrv")
 
 [node name="WeaponSystem" type="Node" parent="." node_paths=PackedStringArray("_weaponVisual", "_spawnOrigin")]
 script = ExtResource("13_ewsfv")
-_weaponData = ExtResource("14_tjcd2")
+_weaponData = ExtResource("12_1bu65")
 _bullet = ExtResource("15_6sy8a")
 _weaponVisual = NodePath("../HandOrigin/WeaponSprite")
 _spawnOrigin = NodePath("../HandOrigin/BulletOrigin")

@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2tyqtwmawmrd"]
+
+[ext_resource type="Texture2D" uid="uid://dohjbbfq2brtg" path="res://Assets/Sprites/FX/slide_dust_fx.png" id="1_gq7yl"]
+[ext_resource type="Script" path="res://Entities/FX/animated_sprite_fx.gd" id="2_eufr7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfwtq"]
+atlas = ExtResource("1_gq7yl")
+region = Rect2(0, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqmw0"]
+atlas = ExtResource("1_gq7yl")
+region = Rect2(16, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vdrx"]
+atlas = ExtResource("1_gq7yl")
+region = Rect2(32, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byuwt"]
+atlas = ExtResource("1_gq7yl")
+region = Rect2(48, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wln8k"]
+atlas = ExtResource("1_gq7yl")
+region = Rect2(64, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfiw1"]
+atlas = ExtResource("1_gq7yl")
+region = Rect2(80, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bfbs"]
+atlas = ExtResource("1_gq7yl")
+region = Rect2(96, 0, 16, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8qw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfwtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqmw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vdrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byuwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wln8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfiw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bfbs")
+}],
+"loop": false,
+"name": &"default",
+"speed": 25.0
+}]
+
+[node name="slide_dust_fx" type="AnimatedSprite2D"]
+z_index = 1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_a8qw2")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+offset = Vector2(0, -5)
+script = ExtResource("2_eufr7")

@@ -10,6 +10,7 @@ _name = "M-16"
 _cadence = 0.4
 _reloadTime = 2.0
 _camShakeAmount = 0.0
+_recoil = 0.5
 _maxAmmo = 25
 _sprite = ExtResource("2_t0iu8")
 _projectile = ExtResource("1_561o2")

@@ -21,7 +21,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5);
 
 func revive():
-	pass
+	_healthState = HealthStates.ALIVE;
+	_actualValue = _maxValue;
 
 @rpc("call_local")
 func _take_damage(damage,damager):
@@ -38,11 +39,12 @@ func _death():
 		return;
 	if _owner is Character2D:
 		_owner.set_status(Character2D.CharacterStatus.NOT_ACTIVE);
-#region for Online
-	print(_owner._pseudo," was killed by",_killer);
-	
-#endregion
+
 	#_owner.hide();
 	if(_healthState != HealthStates.DEAD):
+#region for Online
+		OnlineUi.kill_log(_owner._pseudo,_killer);
+		print(_owner._pseudo," was killed by",_killer);		
+#endregion
 		OnDeath.emit();
 	_healthState = HealthStates.DEAD;
