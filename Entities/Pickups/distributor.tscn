@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://g3cwddc1a308"]
+
+[ext_resource type="Script" path="res://Entities/Pickups/distributor.gd" id="1_115nq"]
+
+[node name="Distributor" type="Node2D"]
+script = ExtResource("1_115nq")

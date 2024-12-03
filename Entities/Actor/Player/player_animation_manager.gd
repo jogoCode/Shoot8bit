@@ -33,6 +33,10 @@ func move_animation(isMoving:bool):
 		change_animation("Idle");
 
 func slide_animation():
+	if(_character._lastVel.x <0):
+		_animatedSprite.flip_h = true;
+	if(_character._lastVel.x >0):
+		_animatedSprite.flip_h = true;
 	change_animation("Slide");
 
 #endregion

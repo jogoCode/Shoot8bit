@@ -19,9 +19,10 @@ func _physics_process(delta: float) -> void:
 	if(_owner._status != Character2D.CharacterStatus.ACTIVE): return;
 	if _direction:
 		_owner._lastVel = _direction;
-		_velocity.x = lerp(_velocity.x,_direction.x * SPEED,ACCEL*delta);
-		_velocity.y = lerp(_velocity.y,_direction.y * SPEED,ACCEL*delta);
-		OnMovement.emit(true);		
+		var direction = _direction*SPEED;
+		_velocity.x = lerp(_velocity.x,direction.x,ACCEL*delta);
+		_velocity.y = lerp(_velocity.y,direction.y,ACCEL*delta);
+		OnMovement.emit(true);
 	else:
 		_velocity.x = move_toward(_velocity.x, 0, SPEED*4*delta)
 		_velocity.y = move_toward(_velocity.y, 0, SPEED*4*delta)

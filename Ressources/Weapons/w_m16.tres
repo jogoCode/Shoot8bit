@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_6ygi6")
 _name = "M-16"
-_cadence = 0.4
+_cadence = 0.25
 _reloadTime = 2.0
 _camShakeAmount = 0.0
 _recoil = 0.5

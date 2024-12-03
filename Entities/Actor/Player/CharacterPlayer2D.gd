@@ -52,6 +52,10 @@ func _respawn():
 	get_node("HandOrigin").show();
 
 @rpc("call_local")
+func set_is_interact(value:bool):
+	_isInteract = value;
+
+@rpc("call_local")
 func rpc_death():
 	$Hurtbox/CollisionShape2D.disabled = true;
 	_playerAnimation.change_animation("Die");
@@ -62,9 +66,8 @@ func rpc_death():
 	await  get_tree().create_timer(0.1).timeout;
 	if(!_weaponSystem._weaponData._name.contains("gun")):
 		get_tree().current_scene.add_child(pickup);
-	pickup.show();
-	await  get_tree().create_timer(2).timeout;
 	_weaponSystem._weaponData = load("res://Ressources/Weapons/w_gun.tres");
+	await  get_tree().create_timer(2).timeout;
 	_respawn()
 
 

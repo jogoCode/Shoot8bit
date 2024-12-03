@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_bswke")
 _name = "AK-47"
-_cadence = 0.15
+_cadence = 0.18
 _reloadTime = 2.0
 _camShakeAmount = 0.0
 _recoil = 0.65

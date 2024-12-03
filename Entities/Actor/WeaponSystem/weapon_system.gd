@@ -107,7 +107,12 @@ func rpc_instantiate_shoot(bulletDir:Vector2):
 		if bulletInst :
 			_ammo -=1;
 			ammo_changed.emit();
-			bulletInst._dir = bulletDir+Vector2(randf_range(-_weaponData._recoil,_weaponData._recoil),randf_range(-_weaponData._recoil,_weaponData._recoil));
+			var randDir = 0
+			if _owner.velocity.length()>0:
+				randDir = randf_range(-_weaponData._recoil,_weaponData._recoil);
+			if _owner.velocity.length()<=0:
+				randDir = randf_range(-_weaponData._recoil/2,_weaponData._recoil/2);
+			bulletInst._dir = bulletDir+Vector2(randDir,randDir);
 			bulletInst._owner = _owner;
 			_shootTimer.start();
 			_canShoot = false;
