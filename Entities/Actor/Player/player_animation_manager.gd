@@ -36,7 +36,7 @@ func slide_animation():
 	if(_character._lastVel.x <0):
 		_animatedSprite.flip_h = true;
 	if(_character._lastVel.x >0):
-		_animatedSprite.flip_h = true;
+		_animatedSprite.flip_h = false;
 	change_animation("Slide");
 
 #endregion

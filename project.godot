@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SoundFxManager="res://Common/SoundManager/sound_fx_manager.tscn"
 Sound2dManager="*res://Common/SoundManager/Sound2dFXManager.tscn"
+Online="*res://Common/Online/online.tscn"
 OnlineUi="*res://Common/Online/online_ui.tscn"
 
 [display]

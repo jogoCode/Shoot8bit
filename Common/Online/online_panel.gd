@@ -10,7 +10,7 @@ const PORT = 6980;
 var _enet_peer = ENetMultiplayerPeer.new();
 
 func _ready() -> void:
-	pass 
+	pass
 
 
 func _process(delta: float) -> void:
@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 func _on_host_button_pressed() -> void:
 	if !has_pseudo():
 		return;
-	get_child(0).hide();
 	_enet_peer.create_server(PORT);
 	multiplayer.multiplayer_peer = _enet_peer;
 	multiplayer.peer_connected.connect(add_player);
@@ -74,3 +73,4 @@ func upnp_setup():
 	
 	print("Succes ! Join Address: %s" % upnp.query_external_address());
 	get_node("IP").text = str(upnp.query_external_address());
+	hide();

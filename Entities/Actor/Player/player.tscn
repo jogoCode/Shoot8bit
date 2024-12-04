@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Entities/Actor/Player/player_movement.gd" id="9_vi2el"]
 [ext_resource type="Script" path="res://Entities/Actor/Player/player_animation_manager.gd" id="10_oebc3"]
 [ext_resource type="Script" path="res://Common/JaugeSystem/HealthSystem.gd" id="11_03t0c"]
-[ext_resource type="Resource" uid="uid://bg82gnosnlkdy" path="res://Ressources/Weapons/w_m16.tres" id="12_8m42v"]
+[ext_resource type="Resource" uid="uid://cqinmishtua2r" path="res://Ressources/Weapons/w_gun.tres" id="12_lc4wp"]
 [ext_resource type="Script" path="res://Entities/Actor/input_manager.gd" id="12_qdnrv"]
 [ext_resource type="Script" path="res://Entities/Actor/WeaponSystem/weapon_system.gd" id="13_ewsfv"]
 [ext_resource type="PackedScene" uid="uid://bsxy6haadrbwd" path="res://Entities/Projectile/projectile.tscn" id="15_6sy8a"]
@@ -243,7 +243,7 @@ script = ExtResource("12_qdnrv")
 
 [node name="WeaponSystem" type="Node" parent="." node_paths=PackedStringArray("_weaponVisual", "_spawnOrigin")]
 script = ExtResource("13_ewsfv")
-_weaponData = ExtResource("12_8m42v")
+_weaponData = ExtResource("12_lc4wp")
 _bullet = ExtResource("15_6sy8a")
 _weaponVisual = NodePath("../HandOrigin/WeaponSprite")
 _spawnOrigin = NodePath("../HandOrigin/BulletOrigin")
